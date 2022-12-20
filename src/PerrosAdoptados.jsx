@@ -1,13 +1,15 @@
 import React from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 import { getContract } from './hooks/getContract';
-import { Perro } from './Perro';
+import { ListaPerros } from './ListaPerros';
 
 
 
 export const PerrosAdoptados = () => {
  
   const {address,contract,pending,dataperros}=getContract();
-  
+    
   return (
     <>
      {
@@ -31,17 +33,14 @@ export const PerrosAdoptados = () => {
       
     }
     {
-      !pending && (<ul>
-        
-          {
-            dataperros.map((perro,index)=>(
-              <Perro key={index} perro={perro} />
-            ))
-          }
-        
-      </ul>)
+      !pending && (
+      
+            <ListaPerros dataperros={dataperros}/>
+         
+      )
       
     }
+  
     </>
   )
 }

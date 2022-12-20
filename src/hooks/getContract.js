@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import detectEthereumProvider from '@metamask/detect-provider';
 import {Contract, ethers} from 'ethers';
 import MyContractManifest from '../contracts/ContratoInicial.json';
@@ -35,9 +35,10 @@ const getBlockChain=async(setAddress,setContract,setPending,setDataPerros)=>{
     console.log(err);
   }
 }
+
  
 export const getContract = () => {
-
+    
     const [address,setAddress]=useState(null);
     const [contract,setContract]=useState(null);
     const [pending,setPending]=useState(true);
@@ -46,7 +47,6 @@ export const getContract = () => {
     useEffect(() => {
 
         getBlockChain(setAddress,setContract,setPending,setDataPerros);
-        console.log(dataperros);
            
     }, [])
     
@@ -58,3 +58,4 @@ export const getContract = () => {
   }
       
 }
+

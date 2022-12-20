@@ -2,6 +2,9 @@ import React from 'react'
 
 export const Perro = ({perro}) => {
   return (
-    <li>{perro}</li>
+    <>
+    <li>{perro} <button onClick={()=>{}}>Adoptar</button></li>
+    <br />
+    </>
   )
 }
