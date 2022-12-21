@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRef } from 'react';
-import { useEffect } from 'react';
 import { getContract } from './hooks/getContract';
 import { ListaPerros } from './ListaPerros';
 
@@ -9,7 +8,7 @@ import { ListaPerros } from './ListaPerros';
 export const PerrosAdoptados = () => {
  
   const {address,contract,pending,dataperros}=getContract();
-    
+   
   return (
     <>
      {
@@ -35,7 +34,7 @@ export const PerrosAdoptados = () => {
     {
       !pending && (
       
-            <ListaPerros dataperros={dataperros}/>
+            <ListaPerros dataperros={dataperros} contrato={contract}/>
          
       )
       
