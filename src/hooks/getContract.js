@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import detectEthereumProvider from '@metamask/detect-provider';
 import {Contract, ethers} from 'ethers';
 import MyContractManifest from '../contracts/ContratoInicial.json';
@@ -20,8 +20,9 @@ const getBlockChain=async(setAddress,setContract,setPending,setDataPerros)=>{
          MyContractManifest.abi,
          signer  
        );
-  
+        console.log("ejecucion de solicitud");
        setContract(myContract);
+       
        setDataPerros(await myContract.getPerrosAdoptados());
        setPending(false);
   
@@ -46,15 +47,17 @@ export const getContract = () => {
     
     useEffect(() => {
 
-        getBlockChain(setAddress,setContract,setPending,setDataPerros);
+      getBlockChain(setAddress,setContract,setPending,setDataPerros);
            
     }, [])
+    
     
   return {
     address,
     contract,
     pending,
-    dataperros
+    dataperros,
+    setDataPerros
   }
       
 }

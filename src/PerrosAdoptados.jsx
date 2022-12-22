@@ -7,8 +7,8 @@ import { ListaPerros } from './ListaPerros';
 
 export const PerrosAdoptados = () => {
  
-  const {address,contract,pending,dataperros}=getContract();
-   
+  const {address,contract,pending,dataperros,setDataPerros}=getContract();
+  
   return (
     <>
      {
@@ -34,7 +34,7 @@ export const PerrosAdoptados = () => {
     {
       !pending && (
       
-            <ListaPerros dataperros={dataperros} contrato={contract}/>
+            <ListaPerros dataperros={dataperros} contrato={contract} setDataPerros={setDataPerros}/>
          
       )
       

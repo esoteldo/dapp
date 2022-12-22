@@ -1,14 +1,15 @@
 import React from 'react'
 import { Perro } from './Perro'
 
-export const ListaPerros = ({dataperros,contrato}) => {
+export const ListaPerros = ({dataperros,contrato,setDataPerros}) => {
+  
   return (
     <>
     <ul>
     {
 
         dataperros.map((perro,index)=>(
-            <Perro key={index} perro={perro} contrato={contrato} />
+            <Perro key={index} perro={perro} contrato={contrato} indice={index} setDataPerros={setDataPerros} />
           ))
     }
     </ul>
