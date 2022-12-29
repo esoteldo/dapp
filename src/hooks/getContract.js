@@ -38,12 +38,12 @@ const getBlockChain=async(setAddress,setContract,setPending,setDataPerros)=>{
 }
 
  
-export const getContract = () => {
+export const getContract = (setDataPerros) => {
     
     const [address,setAddress]=useState(null);
     const [contract,setContract]=useState(null);
     const [pending,setPending]=useState(true);
-    const [dataperros,setDataPerros]=useState([]);
+    
     
     useEffect(() => {
 
@@ -55,9 +55,7 @@ export const getContract = () => {
   return {
     address,
     contract,
-    pending,
-    dataperros,
-    setDataPerros
+    pending
   }
       
 }

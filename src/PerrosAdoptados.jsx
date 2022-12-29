@@ -1,13 +1,24 @@
-import React from 'react';
-import { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getContract } from './hooks/getContract';
 import { ListaPerros } from './ListaPerros';
 
-
+const getLista=async(contrato)=>{
+  if(contrato==true){
+  return await contrato.getPerrosAdoptados();
+  }else return []
+  }
 
 export const PerrosAdoptados = () => {
- 
-  const {address,contract,pending,dataperros,setDataPerros}=getContract();
+  const [dataperros,setDataPerros]=useState([]);
+  const [click,setClick]=useState(0);
+  
+  const {address,contract,pending}=getContract(setDataPerros);
+  useEffect(() => {
+    console.log(click)
+    if(contract==true){
+      setDataPerros[getLista(contract)]
+    }
+  }, [click])
   
   return (
     <>
@@ -34,7 +45,7 @@ export const PerrosAdoptados = () => {
     {
       !pending && (
       
-            <ListaPerros dataperros={dataperros} contrato={contract} setDataPerros={setDataPerros}/>
+            <ListaPerros dataperros={dataperros} contrato={contract} click={click} setClick={setClick}/>
          
       )
       
