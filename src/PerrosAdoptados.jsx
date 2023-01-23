@@ -9,16 +9,9 @@ const getLista=async(contrato)=>{
   }
 
 export const PerrosAdoptados = () => {
-  const [dataperros,setDataPerros]=useState([]);
-  const [click,setClick]=useState(0);
   
-  const {address,contract,pending}=getContract(setDataPerros);
-  useEffect(() => {
-    console.log(click)
-    if(contract==true){
-      setDataPerros[getLista(contract)]
-    }
-  }, [click])
+  
+  const {address,contract,pending,dataPerros,redrawlist}=getContract();
   
   return (
     <>
@@ -45,7 +38,7 @@ export const PerrosAdoptados = () => {
     {
       !pending && (
       
-            <ListaPerros dataperros={dataperros} contrato={contract} click={click} setClick={setClick}/>
+            <ListaPerros dataperros={dataPerros} contrato={contract} redrawlist={redrawlist} />
          
       )
       
